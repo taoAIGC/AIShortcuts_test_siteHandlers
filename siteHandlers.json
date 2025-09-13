@@ -66,7 +66,7 @@
     {
       "name": "Gemini",
       "url": "https://gemini.google.com/",
-      "enabled": false,
+      "enabled": true,
       "supportUrlQuery": false,
       "region": "US",
       "hidden": false,
@@ -108,7 +108,7 @@
     {
       "name": "Grok",
       "url": "https://grok.com/",
-      "enabled": false,
+      "enabled": true,
       "supportUrlQuery": false,
       "region": "US",
       "hidden": false,
@@ -156,7 +156,7 @@
     {
       "name": "Claude",
       "url": "https://claude.ai/chat",
-      "enabled": false,
+      "enabled": true,
       "supportUrlQuery": false,
       "region": "US",
       "hidden": false,
