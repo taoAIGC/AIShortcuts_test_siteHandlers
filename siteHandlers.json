@@ -1,7 +1,7 @@
 {
-  "version": "2.0.0",
-  "lastUpdated": "2024-01-01T00:00:00Z",
-  "description": "AI站点处理器配置 - 配置化三步流程处理",
+  "version": "2.0.1",
+  "lastUpdated": "2024-09-13T00:00:00Z",
+  "description": " 移除部分不支持的网站",
   "author": "AI Shortcuts Team",
   "sites": [
     {
@@ -51,7 +51,7 @@
       "enabled": true,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": false,
+      "hidden": true,
       "supportIframe": false,
       "note": "未来后续支持",
       "searchHandler": {
@@ -128,9 +128,9 @@
       "enabled": false,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": false,
+      "hidden": true,
       "supportIframe": false,
-      "note": "希望有可以给出合理的 steps",
+      "note": "希望有人可以给出合理的 steps",
       "searchHandler": {
         "steps": [
           {
@@ -314,7 +314,7 @@
       "enabled": false,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": false,
+      "hidden": true,
       "supportIframe": false,
       "note": "待后续支持",
       "searchHandler": {
@@ -386,7 +386,7 @@
       "enabled": false,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": false,
+      "hidden": true,
       "supportIframe": false,
       "note": "",
       "searchHandler": {
@@ -433,7 +433,7 @@
       "enabled": false,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": false,
+      "hidden": true,
       "supportIframe": true,
       "note": "待后续支持",
       "searchHandler": {
@@ -643,8 +643,8 @@
       "supportUrlQuery": true,
       "region": "US",
       "hidden": false,
-      "supportIframe": true,
-      "note": "iframe页面下，打不开网页了，暂时无法使用",
+      "supportIframe": false,
+      "note": "iframe页面下，打不开网页了，切换到独立网页模式",
       "searchHandler": {
         "steps": [
           {
