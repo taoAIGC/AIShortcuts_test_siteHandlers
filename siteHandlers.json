@@ -1,5 +1,5 @@
 {
-  "version": "2.0.5",
+  "version": "2.0.6",
   "lastUpdated": "2025-09-13T00:00:00Z",
   "description": "AI站点处理器配置 - 配置化三步流程处理",
   "author": "AI Shortcuts Team",
@@ -187,19 +187,14 @@
             "description": "等待100ms"
           },
           {
-            "action": "sendKeys",
-            "selector": "[contenteditable=\"true\"]",
-            "keys": "Enter",
-            "description": "发送回车键"
-          },
-          {
-            "action": "wait",
-            "duration": 200,
-            "description": "等待200ms"
-          },
-          {
             "action": "click",
-            "selector": "button[type=\"button\"][aria-label=\"Send Message\"], button[aria-label=\"Send\"], button[data-testid=\"send-button\"], button:has(svg)",
+            "selector": [
+              "button[aria-label=\"Send message\"]",
+              "button[type=\"button\"][aria-label=\"Send message\"]",
+              "button[aria-label=\"Send Message\"]",
+              "button[aria-label=\"Send\"]",
+              "button[data-testid=\"send-button\"]"
+            ],
             "retryOnDisabled": true,
             "maxAttempts": 5,
             "retryInterval": 200,
