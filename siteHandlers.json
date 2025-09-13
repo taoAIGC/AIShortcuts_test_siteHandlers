@@ -1,9 +1,213 @@
 {
-  "version": "2.0.3",
-  "lastUpdated": "2024-09-13T00:00:00Z",
-  "description": " 移除部分不支持的网站",
+  "version": "2.0.2",
+  "lastUpdated": "2025-09-13T00:00:00Z",
+  "description": "AI站点处理器配置 - 配置化三步流程处理",
   "author": "AI Shortcuts Team",
   "sites": [
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com/",
+      "enabled": true,
+      "supportUrlQuery": false,
+      "region": "US",
+      "hidden": false,
+      "supportIframe": true,
+      "note": "",
+      "searchHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "#prompt-textarea",
+            "description": "聚焦ChatGPT输入框"
+          },
+          {
+            "action": "setValue",
+            "selector": "#prompt-textarea",
+            "inputType": "contenteditable",
+            "description": "设置ChatGPT输入框内容"
+          },
+          {
+            "action": "triggerEvents",
+            "selector": "#prompt-textarea",
+            "events": ["input", "change", "blur", "focus"],
+            "description": "触发输入事件"
+          },
+          {
+            "action": "wait",
+            "duration": 100,
+            "description": "等待100ms"
+          },
+          {
+            "action": "click",
+            "selector": "button[data-testid=\"send-button\"]",
+            "description": "点击发送按钮"
+          }
+        ]
+      },
+      "fileUploadHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "#prompt-textarea",
+            "description": "聚焦ChatGPT输入框准备文件粘贴"
+          },
+          {
+            "action": "wait",
+            "duration": 200,
+            "description": "等待200ms确保聚焦完成"
+          },
+          {
+            "action": "paste",
+            "description": "执行文件粘贴操作"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Gemini",
+      "url": "https://gemini.google.com/",
+      "enabled": false,
+      "supportUrlQuery": false,
+      "region": "US",
+      "hidden": false,
+      "supportIframe": true,
+      "note": "",
+      "searchHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "[contenteditable=\"true\"]",
+            "description": "聚焦可编辑区域"
+          },
+          {
+            "action": "setValue",
+            "selector": "[contenteditable=\"true\"]",
+            "inputType": "contenteditable",
+            "description": "设置可编辑区域内容"
+          },
+          {
+            "action": "triggerEvents",
+            "selector": "[contenteditable=\"true\"]",
+            "events": ["input", "change", "blur", "focus"],
+            "description": "触发输入事件"
+          },
+          {
+            "action": "wait",
+            "duration": 100,
+            "description": "等待100ms"
+          },
+          {
+            "action": "sendKeys",
+            "selector": "[contenteditable=\"true\"]",
+            "keys": "Enter",
+            "description": "发送回车键"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Grok",
+      "url": "https://grok.com/",
+      "enabled": false,
+      "supportUrlQuery": false,
+      "region": "US",
+      "hidden": false,
+      "supportIframe": true,
+      "note": "",
+      "searchHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "textarea",
+            "description": "聚焦输入框"
+          },
+          {
+            "action": "setValue",
+            "selector": "textarea",
+            "inputType": "textarea",
+            "description": "设置输入框的值"
+          },
+          {
+            "action": "triggerEvents",
+            "selector": "textarea",
+            "events": ["input"],
+            "description": "触发输入事件"
+          },
+          {
+            "action": "triggerEvents",
+            "selector": "textarea",
+            "events": ["input", "change", "blur", "focus"],
+            "description": "触发完整的输入事件序列"
+          },
+          {
+            "action": "wait",
+            "duration": 100,
+            "description": "等待100ms"
+          },
+          {
+            "action": "sendKeys",
+            "selector": "textarea",
+            "keys": "Enter",
+            "description": "发送回车键"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai/chat",
+      "enabled": false,
+      "supportUrlQuery": false,
+      "region": "US",
+      "hidden": false,
+      "supportIframe": true,
+      "note": "",
+      "searchHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "[contenteditable=\"true\"]",
+            "description": "聚焦可编辑区域"
+          },
+          {
+            "action": "setValue",
+            "selector": "[contenteditable=\"true\"]",
+            "inputType": "contenteditable",
+            "description": "设置可编辑区域内容"
+          },
+          {
+            "action": "triggerEvents",
+            "selector": "[contenteditable=\"true\"]",
+            "events": ["input", "change", "blur", "focus"],
+            "description": "触发输入事件"
+          },
+          {
+            "action": "wait",
+            "duration": 100,
+            "description": "等待100ms"
+          },
+          {
+            "action": "sendKeys",
+            "selector": "[contenteditable=\"true\"]",
+            "keys": "Enter",
+            "description": "发送回车键"
+          },
+          {
+            "action": "wait",
+            "duration": 200,
+            "description": "等待200ms"
+          },
+          {
+            "action": "custom",
+            "customAction": "retry_click",
+            "selector": "button[type=\"button\"][aria-label=\"Send Message\"], button[aria-label=\"Send\"], button[data-testid=\"send-button\"], button:has(svg)",
+            "maxAttempts": 1,
+            "retryInterval": 0,
+            "description": "尝试点击Claude发送按钮"
+          }
+        ]
+      }
+    },
     {
       "name": "DeepSeek",
       "url": "https://chat.deepseek.com/",
@@ -43,6 +247,54 @@
             "description": "发送回车键"
           }
         ]
+      },
+      "fileUploadHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "textarea",
+            "description": "聚焦输入框准备文件粘贴"
+          },
+          {
+            "action": "wait",
+            "duration": 200,
+            "description": "等待200ms确保聚焦完成"
+          },
+          {
+            "action": "paste",
+            "description": "执行文件粘贴操作"
+          }
+        ]
+      }
+    },
+    {
+      "name": "豆包",
+      "url": "https://doubao.com/chat",
+      "enabled": true,
+      "supportUrlQuery": false,
+      "region": "China",
+      "hidden": false,
+      "supportIframe": true,
+      "note": "",
+      "searchHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "textarea[data-testid=\"chat_input_input\"]",
+            "description": "聚焦豆包输入框"
+          },
+          {
+            "action": "setValue",
+            "selector": "textarea[data-testid=\"chat_input_input\"]",
+            "description": "设置豆包输入框的值"
+          },
+          {
+            "action": "triggerEvents",
+            "selector": "textarea[data-testid=\"chat_input_input\"]",
+            "events": ["input", "change", "blur", "focus", "keydown", "keyup", "keypress"],
+            "description": "触发多种输入事件"
+          }
+        ]
       }
     },
     {
@@ -51,7 +303,7 @@
       "enabled": true,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": true,
+      "hidden": false,
       "supportIframe": false,
       "note": "未来后续支持",
       "searchHandler": {
@@ -129,8 +381,8 @@
       "supportUrlQuery": false,
       "region": "China",
       "hidden": true,
-      "supportIframe": false,
-      "note": "希望有人可以给出合理的 steps",
+      "supportIframe": true,
+      "note": "希望有可以给出合理的 steps",
       "searchHandler": {
         "steps": [
           {
@@ -166,12 +418,30 @@
             "description": "重试点击发送按钮"
           }
         ]
+      },
+      "fileUploadHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": ".yc-editor",
+            "description": "聚焦文心一言编辑器准备文件粘贴"
+          },
+          {
+            "action": "wait",
+            "duration": 200,
+            "description": "等待200ms确保聚焦完成"
+          },
+          {
+            "action": "paste",
+            "description": "执行文件粘贴操作"
+          }
+        ]
       }
     },
     {
       "name": "腾讯元宝",
       "url": "https://yuanbao.tencent.com/chat/",
-      "enabled": true,
+      "enabled": false,
       "supportUrlQuery": false,
       "region": "China",
       "hidden": false,
@@ -208,6 +478,24 @@
             "description": "发送回车键"
           }
         ]
+      },
+      "fileUploadHandler": {
+        "steps": [
+          {
+            "action": "focus",
+            "selector": "[contenteditable=\"true\"]",
+            "description": "聚焦可编辑区域准备文件粘贴"
+          },
+          {
+            "action": "wait",
+            "duration": 200,
+            "description": "等待200ms确保聚焦完成"
+          },
+          {
+            "action": "paste",
+            "description": "执行文件粘贴操作"
+          }
+        ]
       }
     },
     {
@@ -229,47 +517,7 @@
         ]
       }
     },
-    {
-      "name": "ChatGPT",
-      "url": "https://chatgpt.com/",
-      "enabled": true,
-      "supportUrlQuery": false,
-      "region": "US",
-      "hidden": false,
-      "supportIframe": true,
-      "note": "",
-      "searchHandler": {
-        "steps": [
-          {
-            "action": "focus",
-            "selector": "#prompt-textarea",
-            "description": "聚焦ChatGPT输入框"
-          },
-          {
-            "action": "setValue",
-            "selector": "#prompt-textarea",
-            "inputType": "contenteditable",
-            "description": "设置ChatGPT输入框内容"
-          },
-          {
-            "action": "triggerEvents",
-            "selector": "#prompt-textarea",
-            "events": ["input", "change", "blur", "focus"],
-            "description": "触发输入事件"
-          },
-          {
-            "action": "wait",
-            "duration": 100,
-            "description": "等待100ms"
-          },
-          {
-            "action": "click",
-            "selector": "button[data-testid=\"send-button\"]",
-            "description": "点击发送按钮"
-          }
-        ]
-      }
-    },
+   
     {
       "name": "纳米AI",
       "url": "https://nanoai.live/",
@@ -350,43 +598,14 @@
         ]
       }
     },
-    {
-      "name": "豆包",
-      "url": "https://doubao.com/chat",
-      "enabled": false,
-      "supportUrlQuery": false,
-      "region": "China",
-      "hidden": false,
-      "supportIframe": true,
-      "note": "",
-      "searchHandler": {
-        "steps": [
-          {
-            "action": "focus",
-            "selector": "textarea[data-testid=\"chat_input_input\"]",
-            "description": "聚焦豆包输入框"
-          },
-          {
-            "action": "setValue",
-            "selector": "textarea[data-testid=\"chat_input_input\"]",
-            "description": "设置豆包输入框的值"
-          },
-          {
-            "action": "triggerEvents",
-            "selector": "textarea[data-testid=\"chat_input_input\"]",
-            "events": ["input", "change", "blur", "focus", "keydown", "keyup", "keypress"],
-            "description": "触发多种输入事件"
-          }
-        ]
-      }
-    },
+    
     {
       "name": "通义千问",
       "url": "https://tongyi.com/",
       "enabled": false,
       "supportUrlQuery": false,
       "region": "China",
-      "hidden": true,
+      "hidden": false,
       "supportIframe": false,
       "note": "",
       "searchHandler": {
@@ -506,96 +725,8 @@
         ]
       }
     },
-    {
-      "name": "Grok",
-      "url": "https://grok.com/",
-      "enabled": false,
-      "supportUrlQuery": false,
-      "region": "US",
-      "hidden": false,
-      "supportIframe": true,
-      "note": "",
-      "searchHandler": {
-        "steps": [
-          {
-            "action": "focus",
-            "selector": "textarea",
-            "description": "聚焦输入框"
-          },
-          {
-            "action": "setValue",
-            "selector": "textarea",
-            "inputType": "textarea",
-            "description": "设置输入框的值"
-          },
-          {
-            "action": "triggerEvents",
-            "selector": "textarea",
-            "events": ["input"],
-            "description": "触发输入事件"
-          },
-          {
-            "action": "triggerEvents",
-            "selector": "textarea",
-            "events": ["input", "change", "blur", "focus"],
-            "description": "触发完整的输入事件序列"
-          },
-          {
-            "action": "wait",
-            "duration": 100,
-            "description": "等待100ms"
-          },
-          {
-            "action": "sendKeys",
-            "selector": "textarea",
-            "keys": "Enter",
-            "description": "发送回车键"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Gemini",
-      "url": "https://gemini.google.com/",
-      "enabled": false,
-      "supportUrlQuery": false,
-      "region": "US",
-      "hidden": false,
-      "supportIframe": true,
-      "note": "",
-      "searchHandler": {
-        "steps": [
-          {
-            "action": "focus",
-            "selector": "[contenteditable=\"true\"]",
-            "description": "聚焦可编辑区域"
-          },
-          {
-            "action": "setValue",
-            "selector": "[contenteditable=\"true\"]",
-            "inputType": "contenteditable",
-            "description": "设置可编辑区域内容"
-          },
-          {
-            "action": "triggerEvents",
-            "selector": "[contenteditable=\"true\"]",
-            "events": ["input", "change", "blur", "focus"],
-            "description": "触发输入事件"
-          },
-          {
-            "action": "wait",
-            "duration": 100,
-            "description": "等待100ms"
-          },
-          {
-            "action": "sendKeys",
-            "selector": "[contenteditable=\"true\"]",
-            "keys": "Enter",
-            "description": "发送回车键"
-          }
-        ]
-      }
-    },
+    
+    
     {
       "name": "Copilot",
       "url": "https://copilot.microsoft.com/",
@@ -639,12 +770,12 @@
     {
       "name": "Perplexity",
       "url": "https://www.perplexity.ai/search?q={query}",
-      "enabled": false,
+      "enabled": true,
       "supportUrlQuery": true,
       "region": "US",
       "hidden": false,
-      "supportIframe": false,
-      "note": "iframe页面下，打不开网页了，切换到独立网页模式",
+      "supportIframe": true,
+      "note": "iframe页面下，打不开网页了，暂时无法使用",
       "searchHandler": {
         "steps": [
           {
@@ -655,61 +786,7 @@
         ]
       }
     },
-    {
-      "name": "Claude",
-      "url": "https://claude.ai/chat",
-      "enabled": false,
-      "supportUrlQuery": false,
-      "region": "US",
-      "hidden": false,
-      "supportIframe": true,
-      "note": "",
-      "searchHandler": {
-        "steps": [
-          {
-            "action": "focus",
-            "selector": "[contenteditable=\"true\"]",
-            "description": "聚焦可编辑区域"
-          },
-          {
-            "action": "setValue",
-            "selector": "[contenteditable=\"true\"]",
-            "inputType": "contenteditable",
-            "description": "设置可编辑区域内容"
-          },
-          {
-            "action": "triggerEvents",
-            "selector": "[contenteditable=\"true\"]",
-            "events": ["input", "change", "blur", "focus"],
-            "description": "触发输入事件"
-          },
-          {
-            "action": "wait",
-            "duration": 100,
-            "description": "等待100ms"
-          },
-          {
-            "action": "sendKeys",
-            "selector": "[contenteditable=\"true\"]",
-            "keys": "Enter",
-            "description": "发送回车键"
-          },
-          {
-            "action": "wait",
-            "duration": 200,
-            "description": "等待200ms"
-          },
-          {
-            "action": "custom",
-            "customAction": "retry_click",
-            "selector": "button[type=\"button\"][aria-label=\"Send Message\"], button[aria-label=\"Send\"], button[data-testid=\"send-button\"], button:has(svg)",
-            "maxAttempts": 1,
-            "retryInterval": 0,
-            "description": "尝试点击Claude发送按钮"
-          }
-        ]
-      }
-    },
+    
     {
       "name": "POE",
       "url": "https://poe.com/",
